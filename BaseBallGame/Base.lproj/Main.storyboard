@@ -656,6 +656,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="answer : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5L-iS-WR0">
+                                <rect key="frame" x="142.5" y="479" width="129.5" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -665,14 +671,17 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x30-TG-fga" secondAttribute="trailing" constant="40" id="P7K-76-fge"/>
                             <constraint firstItem="x30-TG-fga" firstAttribute="top" secondItem="bNn-TK-YPD" secondAttribute="bottom" constant="20" id="Rsf-LR-t7C"/>
                             <constraint firstItem="x30-TG-fga" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="T06-4x-Wb6"/>
+                            <constraint firstItem="e5L-iS-WR0" firstAttribute="top" secondItem="x30-TG-fga" secondAttribute="bottom" constant="30" id="TKX-Hk-qJu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8EZ-jC-vpa" secondAttribute="bottom" constant="20" id="WVK-WL-cfe"/>
                             <constraint firstItem="1Uh-5n-met" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="XFB-nR-zTD"/>
+                            <constraint firstItem="e5L-iS-WR0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mW1-Hj-lX8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1Uh-5n-met" secondAttribute="trailing" constant="20" id="qAf-HL-GHu"/>
                             <constraint firstItem="bNn-TK-YPD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tRB-Y1-mxj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="answerLable" destination="e5L-iS-WR0" id="ODm-4d-omE"/>
                         <outlet property="eighthRoundBallLabel" destination="Gnc-VD-1Sa" id="4zs-kO-6mg"/>
                         <outlet property="eighthRoundFirstNumberLabel" destination="oSW-Vo-Jn3" id="AXO-rY-1K5"/>
                         <outlet property="eighthRoundFourthNumberLabel" destination="cP9-Gl-hyo" id="zte-kJ-bbV"/>

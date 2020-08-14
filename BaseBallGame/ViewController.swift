@@ -67,6 +67,10 @@ class ViewController: UIViewController {
         secondGuessNumber = numbers[1]
         thirdGuessNumber = numbers[2]
         fourthGuessNumber = numbers[3]
+        
+        let answer = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        print(answer)
+        answerLable.text = "answer : \(firstGuessNumber)\(secondGuessNumber)\(thirdGuessNumber)\(fourthGuessNumber)"
         print("랜덤 숫자는 \(firstGuessNumber)\(secondGuessNumber)\(thirdGuessNumber)\(fourthGuessNumber) 입니다.")
     }
     
@@ -130,6 +134,46 @@ class ViewController: UIViewController {
     @IBOutlet var seventhRoundBallLabel: UILabel!
     @IBOutlet var eighthRoundBallLabel: UILabel!
     @IBOutlet var ninthRoundBallLabel: UILabel!
+    
+    @IBOutlet var answerLable: UILabel!
+    
+    var firstFirst: Int = 0
+    var firstSecond: Int = 0
+    var firstThird: Int = 0
+    var firstFourth: Int = 0
+    var secondFirst: Int = 0
+    var secondSecond: Int = 0
+    var secondThird: Int = 0
+    var secondFourth: Int = 0
+    var thirdFirst: Int = 0
+    var thirdSecond: Int = 0
+    var thirdThird: Int = 0
+    var thirdFourth: Int = 0
+    var fourthFirst: Int = 0
+    var fourthSecond: Int = 0
+    var fourthThird: Int = 0
+    var fourthFourth: Int = 0
+    var fifthFirst: Int = 0
+    var fifthSecond: Int = 0
+    var fifthThird: Int = 0
+    var fifthFourth: Int = 0
+    var sixthFirst: Int = 0
+    var sixthSecond: Int = 0
+    var sixthThird: Int = 0
+    var sixthFourth: Int = 0
+    var seventhFirst: Int = 0
+    var seventhSecond: Int = 0
+    var seventhThird: Int = 0
+    var seventhFourth: Int = 0
+    var ejghthFirst: Int = 0
+    var ejghthSecond: Int = 0
+    var ejghthThird: Int = 0
+    var ejghthFourth: Int = 0
+    var ninthFirst: Int = 0
+    var ninthSecond: Int = 0
+    var ninthThird: Int = 0
+    var ninthFourth: Int = 0
+    
     
     func reset() {
         firstRoundFirstNumberLabel.text = nil
@@ -1113,9 +1157,14 @@ class ViewController: UIViewController {
         }
     }
     
-    var oneone :Int = 0
+    func checkBallFirstRound() {
+        //firstFirst = Int(firstRoundFirstNumberLabel)
+        let oneOne = [firstFirst, firstSecond, firstThird, firstFourth]
+    }
+    
     
     @IBAction func numberPadV(_ sender: UIButton) {
+        
         if roundCount == 1 {
             if (firstRoundFirstNumberLabel.text != nil) && (firstRoundSecondNumberLabel.text != nil) && (firstRoundThirdNumberLabel.text != nil) && (firstRoundFourthNumberLabel.text != nil) {
                 roundCount = 2
