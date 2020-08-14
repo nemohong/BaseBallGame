@@ -61,6 +61,26 @@ class ViewController: UIViewController {
     var fourthGuessNumber : Int = 0
     var roundCount : Int = 1
     
+    var firstBallCount : Int = 0
+    var secondBallCount : Int = 0
+    var thirdBallCount : Int = 0
+    var fourthBallCount : Int = 0
+    var fifthBallCount : Int = 0
+    var sixthBallCount : Int = 0
+    var seventhBallCount : Int = 0
+    var eighthBallCount : Int = 0
+    
+    var firstStrikeCount : Int = 0
+    var secondStrikeCount : Int = 0
+    var thirdStrikeCount : Int = 0
+    var fourthStrikeCount : Int = 0
+    var fifthStrikeCount : Int = 0
+    var sixthStrikeCount : Int = 0
+    var seventhStrikeCount : Int = 0
+    var eighthStrikeCount : Int = 0
+    
+    
+    
     func shuffleSet() {
         let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9].shuffled()
         firstGuessNumber = numbers[0]
@@ -137,42 +157,42 @@ class ViewController: UIViewController {
     
     @IBOutlet var answerLable: UILabel!
     
-    var firstFirst: Int = 0
-    var firstSecond: Int = 0
-    var firstThird: Int = 0
-    var firstFourth: Int = 0
-    var secondFirst: Int = 0
-    var secondSecond: Int = 0
-    var secondThird: Int = 0
-    var secondFourth: Int = 0
-    var thirdFirst: Int = 0
-    var thirdSecond: Int = 0
-    var thirdThird: Int = 0
-    var thirdFourth: Int = 0
-    var fourthFirst: Int = 0
-    var fourthSecond: Int = 0
-    var fourthThird: Int = 0
-    var fourthFourth: Int = 0
-    var fifthFirst: Int = 0
-    var fifthSecond: Int = 0
-    var fifthThird: Int = 0
-    var fifthFourth: Int = 0
-    var sixthFirst: Int = 0
-    var sixthSecond: Int = 0
-    var sixthThird: Int = 0
-    var sixthFourth: Int = 0
-    var seventhFirst: Int = 0
-    var seventhSecond: Int = 0
-    var seventhThird: Int = 0
-    var seventhFourth: Int = 0
-    var ejghthFirst: Int = 0
-    var ejghthSecond: Int = 0
-    var ejghthThird: Int = 0
-    var ejghthFourth: Int = 0
-    var ninthFirst: Int = 0
-    var ninthSecond: Int = 0
-    var ninthThird: Int = 0
-    var ninthFourth: Int = 0
+//    var firstFirst: Int = 0
+//    var firstSecond: Int = 0
+//    var firstThird: Int = 0
+//    var firstFourth: Int = 0
+//    var secondFirst: Int = 0
+//    var secondSecond: Int = 0
+//    var secondThird: Int = 0
+//    var secondFourth: Int = 0
+//    var thirdFirst: Int = 0
+//    var thirdSecond: Int = 0
+//    var thirdThird: Int = 0
+//    var thirdFourth: Int = 0
+//    var fourthFirst: Int = 0
+//    var fourthSecond: Int = 0
+//    var fourthThird: Int = 0
+//    var fourthFourth: Int = 0
+//    var fifthFirst: Int = 0
+//    var fifthSecond: Int = 0
+//    var fifthThird: Int = 0
+//    var fifthFourth: Int = 0
+//    var sixthFirst: Int = 0
+//    var sixthSecond: Int = 0
+//    var sixthThird: Int = 0
+//    var sixthFourth: Int = 0
+//    var seventhFirst: Int = 0
+//    var seventhSecond: Int = 0
+//    var seventhThird: Int = 0
+//    var seventhFourth: Int = 0
+//    var ejghthFirst: Int = 0
+//    var ejghthSecond: Int = 0
+//    var ejghthThird: Int = 0
+//    var ejghthFourth: Int = 0
+//    var ninthFirst: Int = 0
+//    var ninthSecond: Int = 0
+//    var ninthThird: Int = 0
+//    var ninthFourth: Int = 0
     
     
     func reset() {
@@ -1158,8 +1178,13 @@ class ViewController: UIViewController {
     }
     
     func checkBallFirstRound() {
-        //firstFirst = Int(firstRoundFirstNumberLabel)
+        let firstFirst = Int(firstRoundFirstNumberLabel.text ?? "-1")
+        let firstSecond = Int(firstRoundSecondNumberLabel.text ?? "-1")
+        let firstThird = Int(firstRoundThirdNumberLabel.text ?? "-1")
+        let firstFourth = Int(firstRoundFourthNumberLabel.text ?? "-1")
         let oneOne = [firstFirst, firstSecond, firstThird, firstFourth]
+        print(oneOne)
+        
     }
     
     
@@ -1167,6 +1192,7 @@ class ViewController: UIViewController {
         
         if roundCount == 1 {
             if (firstRoundFirstNumberLabel.text != nil) && (firstRoundSecondNumberLabel.text != nil) && (firstRoundThirdNumberLabel.text != nil) && (firstRoundFourthNumberLabel.text != nil) {
+                checkBallFirstRound()
                 roundCount = 2
             }
         } else if roundCount == 2 {
@@ -1208,7 +1234,7 @@ class ViewController: UIViewController {
                 reset()
             }
         }
-        print(roundCount)
+        print("이번 라운드는 \(roundCount)입니다")
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
