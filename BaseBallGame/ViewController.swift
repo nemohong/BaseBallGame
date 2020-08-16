@@ -69,6 +69,7 @@ class ViewController: UIViewController {
     var sixthBallCount : Int = 0
     var seventhBallCount : Int = 0
     var eighthBallCount : Int = 0
+    var ninthBallCount : Int = 0
     
     var firstStrikeCount : Int = 0
     var secondStrikeCount : Int = 0
@@ -78,6 +79,7 @@ class ViewController: UIViewController {
     var sixthStrikeCount : Int = 0
     var seventhStrikeCount : Int = 0
     var eighthStrikeCount : Int = 0
+    var ninthStrikeCount : Int = 0
     
     
     
@@ -88,12 +90,523 @@ class ViewController: UIViewController {
         thirdGuessNumber = numbers[2]
         fourthGuessNumber = numbers[3]
         
-        let answer = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        let answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
         print(answer)
         answerLable.text = "answer : \(firstGuessNumber)\(secondGuessNumber)\(thirdGuessNumber)\(fourthGuessNumber)"
         print("랜덤 숫자는 \(firstGuessNumber)\(secondGuessNumber)\(thirdGuessNumber)\(fourthGuessNumber) 입니다.")
     }
     
+    func checkFirstRound() {
+        let first = Int(firstRoundFirstNumberLabel.text!)
+        let second = Int(firstRoundSecondNumberLabel.text!)
+        let third = Int(firstRoundThirdNumberLabel.text!)
+        let fourth = Int(firstRoundFourthNumberLabel.text!)
+        var array1 : Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            firstRoundFirstNumberLabel.text = nil
+            firstRoundSecondNumberLabel.text = nil
+            firstRoundThirdNumberLabel.text = nil
+            firstRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array1 {
+            print("answer : \(firstRoundFirstNumberLabel.text!)\(firstRoundSecondNumberLabel.text!)\(firstRoundThirdNumberLabel.text!)\(firstRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(firstRoundFirstNumberLabel.text!) == firstGuessNumber {
+                firstStrikeCount += 1
+            }
+            if Int(firstRoundSecondNumberLabel.text!) == secondGuessNumber {
+                firstStrikeCount += 1
+            }
+            if Int(firstRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                firstStrikeCount += 1
+            }
+            if Int(firstRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                firstStrikeCount += 1
+            }
+            
+            firstRoundStrikeLabel.text = "\(firstStrikeCount)"
+            
+            for a in array1 {
+                if answer.contains(a), let idx1 = array1.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array1.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                firstRoundBallLabel.text = "\(4 - array1.count - firstStrikeCount)"
+        }
+        roundCount = 2
+    }
+    
+    func checkSecondRound() {
+        let first = Int(secondRoundFirstNumberLabel.text!)
+        let second = Int(secondRoundSecondNumberLabel.text!)
+        let third = Int(secondRoundThirdNumberLabel.text!)
+        let fourth = Int(secondRoundFourthNumberLabel.text!)
+        var array2: Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            secondRoundFirstNumberLabel.text = nil
+            secondRoundSecondNumberLabel.text = nil
+            secondRoundThirdNumberLabel.text = nil
+            secondRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array2 {
+            print("answer : \(secondRoundFirstNumberLabel.text!)\(secondRoundSecondNumberLabel.text!)\(secondRoundThirdNumberLabel.text!)\(secondRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(secondRoundFirstNumberLabel.text!) == firstGuessNumber {
+                secondStrikeCount += 1
+            }
+            if Int(secondRoundSecondNumberLabel.text!) == secondGuessNumber {
+                secondStrikeCount += 1
+            }
+            if Int(secondRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                secondStrikeCount += 1
+            }
+            if Int(secondRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                secondStrikeCount += 1
+            }
+            
+            secondRoundStrikeLabel.text = "\(secondStrikeCount)"
+            
+            for a in array2 {
+                if answer.contains(a), let idx1 = array2.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array2.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                secondRoundBallLabel.text = "\(4 - array2.count - secondStrikeCount)"
+        }
+        roundCount = 3
+    }
+    
+    func checkThirdRound() {
+        let first = Int(thirdRoundFirstNumberLabel.text!)
+        let second = Int(thirdRoundSecondNumberLabel.text!)
+        let third = Int(thirdRoundThirdNumberLabel.text!)
+        let fourth = Int(thirdRoundFourthNumberLabel.text!)
+        var array3: Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            thirdRoundFirstNumberLabel.text = nil
+            thirdRoundSecondNumberLabel.text = nil
+            thirdRoundThirdNumberLabel.text = nil
+            thirdRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array3 {
+            print("answer : \(thirdRoundFirstNumberLabel.text!)\(thirdRoundSecondNumberLabel.text!)\(thirdRoundThirdNumberLabel.text!)\(thirdRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(thirdRoundFirstNumberLabel.text!) == firstGuessNumber {
+                thirdStrikeCount += 1
+            }
+            if Int(thirdRoundSecondNumberLabel.text!) == secondGuessNumber {
+                thirdStrikeCount += 1
+            }
+            if Int(thirdRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                thirdStrikeCount += 1
+            }
+            if Int(thirdRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                thirdStrikeCount += 1
+            }
+            
+            thirdRoundStrikeLabel.text = "\(thirdStrikeCount)"
+            
+            for a in array3 {
+                if answer.contains(a), let idx1 = array3.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array3.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                thirdRoundBallLabel.text = "\(4 - array3.count - thirdStrikeCount)"
+        }
+        roundCount = 4
+    }
+    
+    func checkFourthRound() {
+        let first = Int(fourthRoundFirstNumberLabel.text!)
+        let second = Int(fourthRoundSecondNumberLabel.text!)
+        let third = Int(fourthRoundThirdNumberLabel.text!)
+        let fourth = Int(fourthRoundFourthNumberLabel.text!)
+        var array4: Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            fourthRoundFirstNumberLabel.text = nil
+            fourthRoundSecondNumberLabel.text = nil
+            fourthRoundThirdNumberLabel.text = nil
+            fourthRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array4 {
+            print("answer : \(fourthRoundFirstNumberLabel.text!)\(fourthRoundSecondNumberLabel.text!)\(fourthRoundThirdNumberLabel.text!)\(fourthRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(fourthRoundFirstNumberLabel.text!) == firstGuessNumber {
+                fourthStrikeCount += 1
+            }
+            if Int(fourthRoundSecondNumberLabel.text!) == secondGuessNumber {
+                fourthStrikeCount += 1
+            }
+            if Int(fourthRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                fourthStrikeCount += 1
+            }
+            if Int(fourthRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                fourthStrikeCount += 1
+            }
+            
+            fourthRoundStrikeLabel.text = "\(fourthStrikeCount)"
+            
+            for a in array4 {
+                if answer.contains(a), let idx1 = array4.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array4.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                fourthRoundBallLabel.text = "\(4 - array4.count - fourthStrikeCount)"
+        }
+        roundCount = 5
+    }
+    
+    func checkFifthRound() {
+        let first = Int(fifthRoundFirstNumberLabel.text!)
+        let second = Int(fifthRoundSecondNumberLabel.text!)
+        let third = Int(fifthRoundThirdNumberLabel.text!)
+        let fourth = Int(fifthRoundFourthNumberLabel.text!)
+        var array5: Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            fifthRoundFirstNumberLabel.text = nil
+            fifthRoundSecondNumberLabel.text = nil
+            fifthRoundThirdNumberLabel.text = nil
+            fifthRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array5 {
+            print("answer : \(fifthRoundFirstNumberLabel.text!)\(fifthRoundSecondNumberLabel.text!)\(fifthRoundThirdNumberLabel.text!)\(fifthRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(fifthRoundFirstNumberLabel.text!) == firstGuessNumber {
+                fifthStrikeCount += 1
+            }
+            if Int(fifthRoundSecondNumberLabel.text!) == secondGuessNumber {
+                fifthStrikeCount += 1
+            }
+            if Int(fifthRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                fifthStrikeCount += 1
+            }
+            if Int(fifthRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                fifthStrikeCount += 1
+            }
+            
+            fifthRoundStrikeLabel.text = "\(fifthStrikeCount)"
+            
+            for a in array5 {
+                if answer.contains(a), let idx1 = array5.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array5.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                fifthRoundBallLabel.text = "\(4 - array5.count - fifthStrikeCount)"
+        }
+        roundCount = 6
+    }
+    
+    func checkSixthRound() {
+        let first = Int(sixthRoundFirstNumberLabel.text!)
+        let second = Int(sixthRoundSecondNumberLabel.text!)
+        let third = Int(sixthRoundThirdNumberLabel.text!)
+        let fourth = Int(sixthRoundFourthNumberLabel.text!)
+        var array6: Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            sixthRoundFirstNumberLabel.text = nil
+            sixthRoundSecondNumberLabel.text = nil
+            sixthRoundThirdNumberLabel.text = nil
+            sixthRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array6 {
+            print("answer : \(sixthRoundFirstNumberLabel.text!)\(thirdRoundSecondNumberLabel.text!)\(thirdRoundThirdNumberLabel.text!)\(sixthRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(sixthRoundFirstNumberLabel.text!) == firstGuessNumber {
+                sixthStrikeCount += 1
+            }
+            if Int(sixthRoundSecondNumberLabel.text!) == secondGuessNumber {
+                sixthStrikeCount += 1
+            }
+            if Int(sixthRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                sixthStrikeCount += 1
+            }
+            if Int(sixthRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                sixthStrikeCount += 1
+            }
+            
+            sixthRoundStrikeLabel.text = "\(sixthStrikeCount)"
+            
+            for a in array6 {
+                if answer.contains(a), let idx1 = array6.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array6.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                sixthRoundBallLabel.text = "\(4 - array6.count - sixthStrikeCount)"
+        }
+        roundCount = 7
+    }
+    
+    func checkSeventhRound() {
+        let first = Int(seventhRoundFirstNumberLabel.text!)
+        let second = Int(seventhRoundSecondNumberLabel.text!)
+        let third = Int(seventhRoundThirdNumberLabel.text!)
+        let fourth = Int(seventhRoundFourthNumberLabel.text!)
+        var array7: Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            seventhRoundFirstNumberLabel.text = nil
+            seventhRoundSecondNumberLabel.text = nil
+            seventhRoundThirdNumberLabel.text = nil
+            seventhRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array7 {
+            print("answer : \(seventhRoundFirstNumberLabel.text!)\(thirdRoundSecondNumberLabel.text!)\(thirdRoundThirdNumberLabel.text!)\(seventhRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(seventhRoundFirstNumberLabel.text!) == firstGuessNumber {
+                seventhStrikeCount += 1
+            }
+            if Int(seventhRoundSecondNumberLabel.text!) == secondGuessNumber {
+                seventhStrikeCount += 1
+            }
+            if Int(seventhRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                seventhStrikeCount += 1
+            }
+            if Int(seventhRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                seventhStrikeCount += 1
+            }
+            
+            seventhRoundStrikeLabel.text = "\(seventhStrikeCount)"
+            
+            for a in array7 {
+                if answer.contains(a), let idx1 = array7.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array7.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                seventhRoundBallLabel.text = "\(4 - array7.count - seventhStrikeCount)"
+        }
+        roundCount = 8
+    }
+    
+    func checkEighthRound() {
+        let first = Int(eighthRoundFirstNumberLabel.text!)
+        let second = Int(eighthRoundSecondNumberLabel.text!)
+        let third = Int(eighthRoundThirdNumberLabel.text!)
+        let fourth = Int(eighthRoundFourthNumberLabel.text!)
+        var array8: Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            eighthRoundFirstNumberLabel.text = nil
+            eighthRoundSecondNumberLabel.text = nil
+            eighthRoundThirdNumberLabel.text = nil
+            eighthRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array8 {
+            print("answer : \(eighthRoundFirstNumberLabel.text!)\(thirdRoundSecondNumberLabel.text!)\(thirdRoundThirdNumberLabel.text!)\(eighthRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(eighthRoundFirstNumberLabel.text!) == firstGuessNumber {
+                eighthStrikeCount += 1
+            }
+            if Int(eighthRoundSecondNumberLabel.text!) == secondGuessNumber {
+                eighthStrikeCount += 1
+            }
+            if Int(eighthRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                eighthStrikeCount += 1
+            }
+            if Int(eighthRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                eighthStrikeCount += 1
+            }
+            
+            eighthRoundStrikeLabel.text = "\(eighthStrikeCount)"
+            
+            for a in array8 {
+                if answer.contains(a), let idx1 = array8.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array8.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                eighthRoundBallLabel.text = "\(4 - array8.count - eighthStrikeCount)"
+        }
+        roundCount = 9
+    }
+    
+    func checkNinthRound() {
+        let first = Int(ninthRoundFirstNumberLabel.text!)
+        let second = Int(ninthRoundSecondNumberLabel.text!)
+        let third = Int(ninthRoundThirdNumberLabel.text!)
+        let fourth = Int(ninthRoundFourthNumberLabel.text!)
+        var array9: Array = [first!, second!, third!, fourth!]
+        var answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
+        
+        if (first == second) || (first == third) || (first == fourth) || (second == third) || (third == fourth) {
+            ninthRoundFirstNumberLabel.text = nil
+            ninthRoundSecondNumberLabel.text = nil
+            ninthRoundThirdNumberLabel.text = nil
+            ninthRoundFourthNumberLabel.text = nil
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            print("중복")
+            return
+        }
+        
+        if answer == array9 {
+            print("answer : \(ninthRoundFirstNumberLabel.text!)\(thirdRoundSecondNumberLabel.text!)\(thirdRoundThirdNumberLabel.text!)\(ninthRoundFourthNumberLabel.text!)")
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+        } else {
+            if Int(ninthRoundFirstNumberLabel.text!) == firstGuessNumber {
+                ninthStrikeCount += 1
+            }
+            if Int(ninthRoundSecondNumberLabel.text!) == secondGuessNumber {
+                ninthStrikeCount += 1
+            }
+            if Int(ninthRoundThirdNumberLabel.text!) == thirdGuessNumber {
+                ninthStrikeCount += 1
+            }
+            if Int(ninthRoundFourthNumberLabel.text!) == fourthGuessNumber {
+                ninthStrikeCount += 1
+            }
+            
+            ninthRoundStrikeLabel.text = "\(ninthStrikeCount)"
+            
+            for a in array9 {
+                if answer.contains(a), let idx1 = array9.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array9.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+                ninthRoundBallLabel.text = "\(4 - array9.count - ninthStrikeCount)"
+        }
+    }
     
     @IBOutlet var firstRoundFirstNumberLabel: UILabel!
     @IBOutlet var secondRoundFirstNumberLabel: UILabel!
@@ -157,42 +670,42 @@ class ViewController: UIViewController {
     
     @IBOutlet var answerLable: UILabel!
     
-//    var firstFirst: Int = 0
-//    var firstSecond: Int = 0
-//    var firstThird: Int = 0
-//    var firstFourth: Int = 0
-//    var secondFirst: Int = 0
-//    var secondSecond: Int = 0
-//    var secondThird: Int = 0
-//    var secondFourth: Int = 0
-//    var thirdFirst: Int = 0
-//    var thirdSecond: Int = 0
-//    var thirdThird: Int = 0
-//    var thirdFourth: Int = 0
-//    var fourthFirst: Int = 0
-//    var fourthSecond: Int = 0
-//    var fourthThird: Int = 0
-//    var fourthFourth: Int = 0
-//    var fifthFirst: Int = 0
-//    var fifthSecond: Int = 0
-//    var fifthThird: Int = 0
-//    var fifthFourth: Int = 0
-//    var sixthFirst: Int = 0
-//    var sixthSecond: Int = 0
-//    var sixthThird: Int = 0
-//    var sixthFourth: Int = 0
-//    var seventhFirst: Int = 0
-//    var seventhSecond: Int = 0
-//    var seventhThird: Int = 0
-//    var seventhFourth: Int = 0
-//    var ejghthFirst: Int = 0
-//    var ejghthSecond: Int = 0
-//    var ejghthThird: Int = 0
-//    var ejghthFourth: Int = 0
-//    var ninthFirst: Int = 0
-//    var ninthSecond: Int = 0
-//    var ninthThird: Int = 0
-//    var ninthFourth: Int = 0
+    //    var firstFirst: Int = 0
+    //    var firstSecond: Int = 0
+    //    var firstThird: Int = 0
+    //    var firstFourth: Int = 0
+    //    var secondFirst: Int = 0
+    //    var secondSecond: Int = 0
+    //    var secondThird: Int = 0
+    //    var secondFourth: Int = 0
+    //    var thirdFirst: Int = 0
+    //    var thirdSecond: Int = 0
+    //    var thirdThird: Int = 0
+    //    var thirdFourth: Int = 0
+    //    var fourthFirst: Int = 0
+    //    var fourthSecond: Int = 0
+    //    var fourthThird: Int = 0
+    //    var fourthFourth: Int = 0
+    //    var fifthFirst: Int = 0
+    //    var fifthSecond: Int = 0
+    //    var fifthThird: Int = 0
+    //    var fifthFourth: Int = 0
+    //    var sixthFirst: Int = 0
+    //    var sixthSecond: Int = 0
+    //    var sixthThird: Int = 0
+    //    var sixthFourth: Int = 0
+    //    var seventhFirst: Int = 0
+    //    var seventhSecond: Int = 0
+    //    var seventhThird: Int = 0
+    //    var seventhFourth: Int = 0
+    //    var ejghthFirst: Int = 0
+    //    var ejghthSecond: Int = 0
+    //    var ejghthThird: Int = 0
+    //    var ejghthFourth: Int = 0
+    //    var ninthFirst: Int = 0
+    //    var ninthSecond: Int = 0
+    //    var ninthThird: Int = 0
+    //    var ninthFourth: Int = 0
     
     
     func reset() {
@@ -1177,55 +1690,43 @@ class ViewController: UIViewController {
         }
     }
     
-    func checkBallFirstRound() {
-        let firstFirst = Int(firstRoundFirstNumberLabel.text ?? "-1")
-        let firstSecond = Int(firstRoundSecondNumberLabel.text ?? "-1")
-        let firstThird = Int(firstRoundThirdNumberLabel.text ?? "-1")
-        let firstFourth = Int(firstRoundFourthNumberLabel.text ?? "-1")
-        let oneOne = [firstFirst, firstSecond, firstThird, firstFourth]
-        print(oneOne)
-        
-    }
-    
-    
     @IBAction func numberPadV(_ sender: UIButton) {
         
         if roundCount == 1 {
             if (firstRoundFirstNumberLabel.text != nil) && (firstRoundSecondNumberLabel.text != nil) && (firstRoundThirdNumberLabel.text != nil) && (firstRoundFourthNumberLabel.text != nil) {
-                checkBallFirstRound()
-                roundCount = 2
+                checkFirstRound()
             }
         } else if roundCount == 2 {
             if (secondRoundFirstNumberLabel.text != nil) && (secondRoundSecondNumberLabel.text != nil) && (secondRoundThirdNumberLabel.text != nil) && (secondRoundFourthNumberLabel.text != nil) {
-                roundCount = 3
+                checkSecondRound()
             }
         } else if roundCount == 3 {
             if (thirdRoundFirstNumberLabel.text != nil) && (thirdRoundSecondNumberLabel.text != nil) && (thirdRoundThirdNumberLabel.text != nil) && (thirdRoundFourthNumberLabel.text != nil) {
-                roundCount = 4
+                checkThirdRound()
             }
         } else if roundCount == 4 {
             if (fourthRoundFirstNumberLabel.text != nil) && (fourthRoundSecondNumberLabel.text != nil) && (fourthRoundThirdNumberLabel.text != nil) && (fourthRoundFourthNumberLabel.text != nil) {
-                roundCount = 5
+                checkFourthRound()
             }
         } else if roundCount == 5 {
             if (fifthRoundFirstNumberLabel.text != nil) && (fifthRoundSecondNumberLabel.text != nil) && (fifthRoundThirdNumberLabel.text != nil) && (fifthRoundFourthNumberLabel.text != nil) {
-                roundCount = 6
+                checkFifthRound()
             }
         } else if roundCount == 6 {
             if (sixthRoundFirstNumberLabel.text != nil) && (sixthRoundSecondNumberLabel.text != nil) && (sixthRoundThirdNumberLabel.text != nil) && (sixthRoundFourthNumberLabel.text != nil) {
-                roundCount = 7
+                checkSixthRound()
             }
         } else if roundCount == 7 {
             if (seventhRoundFirstNumberLabel.text != nil) && (seventhRoundSecondNumberLabel.text != nil) && (seventhRoundThirdNumberLabel.text != nil) && (seventhRoundFourthNumberLabel.text != nil) {
-                roundCount = 8
+                checkSeventhRound()
             }
         } else if roundCount == 8 {
             if (eighthRoundFirstNumberLabel.text != nil) && (eighthRoundSecondNumberLabel.text != nil) && (eighthRoundThirdNumberLabel.text != nil) && (eighthRoundFourthNumberLabel.text != nil) {
-                roundCount = 9
+                checkEighthRound()
             }
         } else if roundCount == 9 {
             if (ninthRoundFirstNumberLabel.text != nil) && (ninthRoundSecondNumberLabel.text != nil) && (ninthRoundThirdNumberLabel.text != nil) && (ninthRoundFourthNumberLabel.text != nil) {
-                
+                checkNinthRound()
                 let alert = UIAlertController(title: "You lose...", message: "the answer is \(firstGuessNumber)\(secondGuessNumber)\(thirdGuessNumber)\(fourthGuessNumber)", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(action)
