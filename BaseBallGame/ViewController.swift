@@ -92,7 +92,8 @@ class ViewController: UIViewController {
         
         let answer : Array = [firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber]
         print(answer)
-        answerLable.text = "answer : \(firstGuessNumber)\(secondGuessNumber)\(thirdGuessNumber)\(fourthGuessNumber)"
+        answerLable.text = ""
+        //answerLable.text = "answer : \(firstGuessNumber)\(secondGuessNumber)\(thirdGuessNumber)\(fourthGuessNumber)"
         print("랜덤 숫자는 \(firstGuessNumber)\(secondGuessNumber)\(thirdGuessNumber)\(fourthGuessNumber) 입니다.")
     }
     
@@ -126,6 +127,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(firstRoundFirstNumberLabel.text!) == firstGuessNumber {
                 firstStrikeCount += 1
@@ -183,6 +185,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(secondRoundFirstNumberLabel.text!) == firstGuessNumber {
                 secondStrikeCount += 1
@@ -240,6 +243,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(thirdRoundFirstNumberLabel.text!) == firstGuessNumber {
                 thirdStrikeCount += 1
@@ -297,6 +301,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(fourthRoundFirstNumberLabel.text!) == firstGuessNumber {
                 fourthStrikeCount += 1
@@ -354,6 +359,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(fifthRoundFirstNumberLabel.text!) == firstGuessNumber {
                 fifthStrikeCount += 1
@@ -411,6 +417,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(sixthRoundFirstNumberLabel.text!) == firstGuessNumber {
                 sixthStrikeCount += 1
@@ -468,6 +475,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(seventhRoundFirstNumberLabel.text!) == firstGuessNumber {
                 seventhStrikeCount += 1
@@ -525,6 +533,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(eighthRoundFirstNumberLabel.text!) == firstGuessNumber {
                 eighthStrikeCount += 1
@@ -582,6 +591,7 @@ class ViewController: UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             reset()
+            return
         } else {
             if Int(ninthRoundFirstNumberLabel.text!) == firstGuessNumber {
                 ninthStrikeCount += 1
@@ -769,7 +779,29 @@ class ViewController: UIViewController {
         eighthRoundBallLabel.text = nil
         ninthRoundBallLabel.text = nil
         
+        firstGuessNumber = 0
+        secondGuessNumber = 0
+        thirdGuessNumber = 0
+        fourthGuessNumber = 0
         roundCount = 1
+        firstBallCount = 0
+        secondBallCount = 0
+        thirdBallCount = 0
+        fourthBallCount = 0
+        fifthBallCount = 0
+        sixthBallCount = 0
+        seventhBallCount = 0
+        eighthBallCount = 0
+        ninthBallCount = 0
+        firstStrikeCount = 0
+        secondStrikeCount = 0
+        thirdStrikeCount = 0
+        fourthStrikeCount = 0
+        fifthStrikeCount = 0
+        sixthStrikeCount = 0
+        seventhStrikeCount = 0
+        eighthStrikeCount = 0
+        ninthStrikeCount = 0
         
         //print(arrayNumbers.randomElement()!)
         shuffleSet()
