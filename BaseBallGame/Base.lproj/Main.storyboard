@@ -18,9 +18,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Uh-5n-met">
                                 <rect key="frame" x="372" y="64" width="22" height="22"/>
                                 <state key="normal" image="memories" catalog="system"/>
-                                <connections>
-                                    <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BN3-8V-74w"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="8EZ-jC-vpa">
                                 <rect key="frame" x="52" y="736" width="310" height="106"/>
@@ -38,7 +35,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J7t-0w-Y8I"/>
+                                                            <action selector="numberPad1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p8w-60-9OT"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zc9-YB-hh9">
@@ -48,7 +45,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9cA-3H-MiX"/>
+                                                            <action selector="numberPad2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="18P-H1-hEg"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAi-Ca-gc9">
@@ -58,7 +55,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YK6-p3-uOI"/>
+                                                            <action selector="numberPad3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZMi-s5-wKZ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UB2-Lu-mga">
@@ -68,7 +65,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lBJ-58-hoB"/>
+                                                            <action selector="numberPad4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aY7-RB-bA9"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctp-8u-veG">
@@ -78,7 +75,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fff-W2-uD3"/>
+                                                            <action selector="numberPad5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Adg-vn-bb5"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -93,7 +90,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zgl-vq-uxi"/>
+                                                            <action selector="numberPad6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FK1-f7-TsZ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGv-Ul-fzV">
@@ -103,7 +100,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kQ4-53-t9P"/>
+                                                            <action selector="numberPad7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fdb-IY-dK4"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d2-Uz-2wO">
@@ -113,7 +110,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad8:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mcF-Z9-E1B"/>
+                                                            <action selector="numberPad8:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rjV-RE-DaF"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXY-AK-4MI">
@@ -123,7 +120,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPad9:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0S-g1-3wu"/>
+                                                            <action selector="numberPad9:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NI7-AG-Wul"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwo-c4-pl5">
@@ -132,9 +129,6 @@
                                                         <state key="normal" title="X">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="numberPadX:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uMk-V9-1CM"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -148,9 +142,6 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                             </preferredSymbolConfiguration>
                                         </state>
-                                        <connections>
-                                            <action selector="numberPadV:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9dR-7i-acb"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -183,12 +174,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lGs-fv-lGP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lGs-fv-lGP" customClass="Basecell">
                                 <rect key="frame" x="20" y="141" width="374" height="594"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tpU-Cf-kqY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="tpU-Cf-kqY" customClass="BaseCell" customModule="BaseBallGame" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpU-Cf-kqY" id="3vH-AP-7L5">
@@ -254,6 +245,15 @@
                                                 </stackView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ballLabel" destination="XOn-9N-cxu" id="T4S-ep-sol"/>
+                                            <outlet property="firstNumberLabel" destination="jnb-4Q-VCw" id="BEB-Qb-0Ed"/>
+                                            <outlet property="fourthNumberLabel" destination="QgL-ae-aFQ" id="Vrf-ds-9P1"/>
+                                            <outlet property="roundLabel" destination="2ZB-OG-Qch" id="fy1-L3-hCy"/>
+                                            <outlet property="secondNumberLabel" destination="q2e-X7-TOS" id="JUS-p9-8C2"/>
+                                            <outlet property="strikeLabel" destination="w68-QY-RgM" id="fK2-yZ-sq3"/>
+                                            <outlet property="thirdNumberLabel" destination="LRh-NB-Adm" id="ZYw-Wk-LRU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -271,14 +271,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="BallLabel" destination="XOn-9N-cxu" id="lel-JJ-YPE"/>
-                        <outlet property="FirstNumberLabel" destination="jnb-4Q-VCw" id="RwM-59-nWo"/>
-                        <outlet property="FourthNumberLabel" destination="QgL-ae-aFQ" id="snc-gk-SAl"/>
-                        <outlet property="RoundLabel" destination="2ZB-OG-Qch" id="biN-mO-WvI"/>
-                        <outlet property="RoundTableView" destination="lGs-fv-lGP" id="tK4-c8-F03"/>
-                        <outlet property="SecondNumberLabel" destination="q2e-X7-TOS" id="co3-oz-SHV"/>
-                        <outlet property="StrikeLabel" destination="w68-QY-RgM" id="XRq-8M-EVP"/>
-                        <outlet property="ThirdNumberLabel" destination="LRh-NB-Adm" id="cDa-yD-9lW"/>
+                        <outlet property="tableView" destination="lGs-fv-lGP" id="gPX-6C-zxC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
