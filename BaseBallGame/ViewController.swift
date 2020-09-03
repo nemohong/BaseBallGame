@@ -20,13 +20,27 @@ class BaseCell: UITableViewCell {
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var ballLabel: UILabel!
     
+    //    var play: Int? {
+    //        didSet {
+    //            if let play = play {
+    //                firstNumberLabel.text = play.first
+    //                secondNumberLabel.text = play.second
+    //                thirdNumberLabel.text = play.third
+    //                fourthNumberLabel.text = play.fourth
+    //                strikeLabel.text = play.strike
+    //                ballLabel.text = play.ball
+    //                roundLabel.text = play.round
+    //            }
+    //        }
+    //    }
+    
 }
 
 class ViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
-     
+    
     var firstAnswerNumber: Int = 0
     var secondAnswerNumber: Int = 0
     var thirdAnswerNumber: Int = 0
@@ -37,41 +51,151 @@ class ViewController: UIViewController {
     var thirdGuessNumber: Int = 0
     var fourthGuessNumber: Int = 0
     
-    var roundCount: Int = 1
+    var roundCount: Int = 0
     var ballCount: Int = 0
     var strikeCount: Int = 0
     
-    var playList = [1, 2, 3, 4, 5]
-//    var playList: [Int]
-//    var playList: [Play]
-//
-//     struct Play {
-//         var game1: Int = 1
-//         var game2: Int = 2
-//         var game3: Int = 3
-//         var game4: Int = 4
-//
-//         var round: String = "1라운드"
-//     }
-//
-     
+    var playChance: Int = 3
+    var playList = [1, 2, 3]
+    var firstNumberLabel = Array(repeating: 0, count: playChance)
+    var secondNumberLabel = Array(repeating: 0, count: playChance)
+    var thirdNumberLabel = Array(repeating: 0, count: playChance)
+    var fourthNumberLabel = Array(repeating: 0, count: playChance)
+    var strikeLabel = Array(repeating: 0, count: playChance)
+    var roundLabel = Array(repeating: 0, count: playChance)
+    var ballLabel = Array(repeating: 0, count: playChance)
+    
+    
+    
+    //    var playList: [Int]
+    //    var playList: [Play]
+    
+    //     struct Play {
+    //         var game1: Int = 1
+    //         var game2: Int = 2
+    //         var game3: Int = 3
+    //         var game4: Int = 4
+    //
+    //         var round: String = "1라운드"
+    //     }
+    
+    
     var guessNumberArray = [0, 0, 0, 0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reset()
         tableView.dataSource = self
         tableView.delegate = self
     }
     
+    func reset() {
+        
+        firstAnswerNumber = 0
+        secondAnswerNumber = 0
+        thirdAnswerNumber = 0
+        fourthAnswerNumber = 0
+        firstGuessNumber = 0
+        secondGuessNumber = 0
+        thirdGuessNumber = 0
+        fourthGuessNumber = 0
+        roundCount = 0
+        ballCount = 0
+        strikeCount = 0
+        firstNumberLabel = Array(repeating: 0, count: firstNumberLabel.count)
+        secondNumberLabel = Array(repeating: 0, count: secondNumberLabel.count)
+        thirdNumberLabel = Array(repeating: 0, count: thirdNumberLabel.count)
+        fourthNumberLabel = Array(repeating: 0, count: fourthNumberLabel.count)
+        strikeLabel = Array(repeating: 0, count: strikeLabel.count)
+        ballLabel = Array(repeating: 0, count: ballLabel.count)
+        shuffleSet()
+        tableView.reloadData()
+        
+    }
+    
+    func shuffleSet() {
+        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9].shuffled()
+        firstAnswerNumber = numbers[0]
+        secondAnswerNumber = numbers[1]
+        thirdAnswerNumber = numbers[2]
+        fourthAnswerNumber = numbers[3]
+        
+        let answer: Array = [firstAnswerNumber, secondAnswerNumber, thirdAnswerNumber, fourthAnswerNumber]
+        print(answer)
+        print("랜덤 숫자는 \(firstAnswerNumber)\(secondAnswerNumber)\(thirdAnswerNumber)\(fourthAnswerNumber) 입니다.")
+    }
+    
+    func checkRound(_ firstNumber:Int, _ secondNumber:Int, _ thirdNumber:Int, _ fourthNumber:Int) {
+        
+        var array: Array = [firstNumber, secondNumber, thirdNumber, fourthNumber]
+        var answer: Array = [firstAnswerNumber, secondAnswerNumber, thirdAnswerNumber, fourthAnswerNumber]
+        
+        print(array)
+        print(answer)
+        
+        if (firstNumber == secondNumber) || (firstNumber == thirdNumber) || (firstNumber == fourthNumber) || (secondNumber == thirdNumber) || (thirdNumber == fourthNumber) {
+            // TODO: 지우기
+            //            firstNumberLabel.text = ""
+            //            secondNumberLabel.text = ""
+            //            thirdNumberLabel.text = ""
+            //            fourthNumberLabel.text = ""
+            
+            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if answer == array {
+            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+            return
+            
+        } else {
+            if firstNumber == firstAnswerNumber {
+                strikeCount += 1
+            }
+            if secondNumber == secondAnswerNumber {
+                strikeCount += 1
+            }
+            if thirdNumber == thirdAnswerNumber {
+                strikeCount += 1
+            }
+            if fourthNumber == fourthAnswerNumber {
+                strikeCount += 1
+            }
+            
+            //            baseCell.strikeLabel.text = "\(strikeCount)"
+            
+            for a in array {
+                if answer.contains(a), let idx1 = array.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+                    array.remove(at: idx1)
+                    answer.remove(at: idx2)
+                }
+            }
+            ballCount = 4 - array.count - strikeCount
+            //            baseCell.ballLabel.text = "\(4 - array.count - strikeCount)"
+        }
+        print("strike는 \(strikeCount)")
+        print("ball은 \(ballCount)")
+        strikeLabel[roundCount] = strikeCount
+        ballLabel[roundCount] = ballCount
+        roundCount += 1
+    }
+    
     func pressButton(_ number: Int) {
-        if guessNumberArray[0] == 0 {
-            guessNumberArray[0] = number
-        } else if guessNumberArray[1] == 0 {
-            guessNumberArray[1] = number
-        } else if guessNumberArray[2] == 0 {
-            guessNumberArray[2] = number
-        } else if guessNumberArray[3] == 0 {
-            guessNumberArray[3] = number
+        if firstNumberLabel[roundCount] == 0 {
+            firstNumberLabel[roundCount] = number
+        } else if secondNumberLabel[roundCount] == 0 {
+            secondNumberLabel[roundCount] = number
+        } else if thirdNumberLabel[roundCount] == 0 {
+            thirdNumberLabel[roundCount] = number
+        } else if fourthNumberLabel[roundCount] == 0 {
+            fourthNumberLabel[roundCount] = number
         }
         
         tableView.reloadData()
@@ -80,7 +204,6 @@ class ViewController: UIViewController {
     @IBAction func numberPad1(_ sender: UIButton) {
         print("1")
         pressButton(1)
-        
     }
     
     @IBAction func numberPad2(_ sender: UIButton) {
@@ -123,34 +246,47 @@ class ViewController: UIViewController {
         pressButton(9)
     }
     
-     /*
-    @IBAction func numberPadX(_ sender: UIButton) {
-        print("X")
-        
-        firstGuessNumber = 0
-        secondGuessNumber = 0
-        thirdGuessNumber = 0
-        fourthGuessNumber = 0
-        // TODO:
-        //        firstNumberLabel.text = ""
-        //        secondNumberLabel.text = ""
-        //        thirdNumberLabel.text = ""
-        //        fourthNumberLabel.text = ""
-    }
+    /*
+     @IBAction func numberPadX(_ sender: UIButton) {
+     print("X")
+     
+     firstGuessNumber = 0
+     secondGuessNumber = 0
+     thirdGuessNumber = 0
+     fourthGuessNumber = 0
+     // TODO:
+     //        firstNumberLabel.text = ""
+     //        secondNumberLabel.text = ""
+     //        thirdNumberLabel.text = ""
+     //        fourthNumberLabel.text = ""
+     }
+     */
     
     @IBAction func numberPadV(_ sender: UIButton) {
-        checkRound(firstGuessNumber, secondGuessNumber, thirdGuessNumber, fourthGuessNumber)
-        reset()
+        if firstNumberLabel[roundCount] != 0 && secondNumberLabel[roundCount] != 0 && thirdNumberLabel[roundCount] != 0 && fourthNumberLabel[roundCount] != 0 {
+            checkRound(firstNumberLabel[roundCount], secondNumberLabel[roundCount], thirdNumberLabel[roundCount], fourthNumberLabel[roundCount])
+            tableView.reloadData()
+            strikeCount = 0
+            ballCount = 0
+        }
         
-        print("이번 라운드는 \(roundCount)입니다")
+        if roundCount == playList.count {
+            let alert = UIAlertController(title: "You lose...", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            reset()
+            return
+        }
+        
+        print("이번 라운드는 \(roundCount + 1)입니다")
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
         print("reset")
         reset()
-        
     }
-    */
+    
 }
 
 // MARK: - Related TableViews
@@ -160,26 +296,26 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return playList.count
         // return playList.count
     }
-     
+    
     // FIXME: dsdfdsfas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! BaseCell
-//
+        //
         cell.roundLabel.text = String(playList[indexPath.row])
-        cell.firstNumberLabel.text = String(guessNumberArray[0])
-        cell.secondNumberLabel.text = String(guessNumberArray[1])
-        cell.thirdNumberLabel.text = String(guessNumberArray[2])
-        cell.fourthNumberLabel.text = String(guessNumberArray[3])
+        cell.firstNumberLabel.text = String(firstNumberLabel[indexPath.row])
+        cell.secondNumberLabel.text = String(secondNumberLabel[indexPath.row])
+        cell.thirdNumberLabel.text = String(thirdNumberLabel[indexPath.row])
+        cell.fourthNumberLabel.text = String(fourthNumberLabel[indexPath.row])
+        cell.strikeLabel.text = String(strikeLabel[indexPath.row])
+        cell.ballLabel.text = String(ballLabel[indexPath.row])
         
-//         let play = playList[indexPath.row]
-//         cell.skdfjkslabel.text = play.round
-//         cell.dslabel.text = play.countdown
-//         cell.sslabel.text = play.game[0]
-//         cell.aalabel.text = play.game[1]
-//         cell.a11label.text = play.game[2]
-//         cell.2label.text = play.game[3]
-//
-//
+        //         let play = playList[indexPath.row]
+        //         cell.roundLabel.text = play.round
+        //         cell.dslabel.text = play.countdown
+        //         cell.firstNumberLabel.text = play.game1
+        //         cell.secondNumberLabel.text = play.game2
+        //         cell.thirdNumberLabel.text = play.game3
+        //         cell.fourthNumberLabel.text = play.game4
         
         return cell
     }
@@ -187,7 +323,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func getAnswer(index: Int) -> String {
         return String(index)
     }
-
+    
     func addOne(index: Int) {
         playList[index] += 1
         tableView.reloadData()
@@ -198,111 +334,95 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: - ??
 /*
  extension ViewController {
-    func reset() {
-        
-        firstAnswerNumber = 0
-        secondAnswerNumber = 0
-        thirdAnswerNumber = 0
-        fourthAnswerNumber = 0
-        firstGuessNumber = 0
-        secondGuessNumber = 0
-        thirdGuessNumber = 0
-        fourthGuessNumber = 0
-        roundCount = 1
-        ballCount = 0
-        strikeCount = 0
-        
-        shuffleSet()
-        
-    }
-    
-    func shuffleSet() {
-        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9].shuffled()
-        firstAnswerNumber = numbers[0]
-        secondAnswerNumber = numbers[1]
-        thirdAnswerNumber = numbers[2]
-        fourthAnswerNumber = numbers[3]
-        
-        let answer: Array = [firstAnswerNumber, secondAnswerNumber, thirdAnswerNumber, fourthAnswerNumber]
-        print(answer)
-        print("랜덤 숫자는 \(firstAnswerNumber)\(secondAnswerNumber)\(thirdAnswerNumber)\(fourthAnswerNumber) 입니다.")
-    }
-    
-    func checkRound(_ firstNumber:Int, _ secondNumber:Int, _ thirdNumber:Int, _ fourthNumber:Int) {
-        
-        var array: Array = [firstNumber, secondNumber, thirdNumber, fourthNumber]
-        var answer: Array = [firstAnswerNumber, secondAnswerNumber, thirdAnswerNumber, fourthAnswerNumber]
-        
-        if (firstNumber == secondNumber) || (firstNumber == thirdNumber) || (firstNumber == fourthNumber) || (secondNumber == thirdNumber) || (thirdNumber == fourthNumber) {
-            // TODO: 지우기
-            //            firstNumberLabel.text = ""
-            //            secondNumberLabel.text = ""
-            //            thirdNumberLabel.text = ""
-            //            fourthNumberLabel.text = ""
-            
-            let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-            
-            print("중복")
-            return
-        }
-        
-        if answer == array {
-            let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-            reset()
-            return
-            
-        } else {
-            if firstNumber == firstAnswerNumber {
-                StrikeCount += 1
-            }
-            if secondNumber == secondAnswerNumber {
-                StrikeCount += 1
-            }
-            if thirdNumber == thirdAnswerNumber {
-                StrikeCount += 1
-            }
-            if fourthNumber == fourthAnswerNumber {
-                StrikeCount += 1
-            }
-            
-            BaseCell.strikeLabel.text = "\(StrikeCount)"
-            
-            for a in array {
-                if answer.contains(a), let idx1 = array.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
-                    array.remove(at: idx1)
-                    answer.remove(at: idx2)
-                }
-            }
-            BaseCell.ballLabel.text = "\(4 - array.count - StrikeCount)"
-        }
-        roundCount += 1
-    }
-    
-    var lastRow = 3
-    func pressButton(_ button: Int) {
-        let baseCell = BaseCell()
-        if firstGuessNumber == 0 {
-            firstGuessNumber = button
-            // playList.last.firstNumberLabel.text =
-            // playList[currentGame].firstNumberLabel.text = ""
-            baseCell.FirstNumberLabel.text = String(firstGuessNumber)
-        } else if secondGuessNumber == 0 {
-            secondGuessNumber = button
-            baseCell.SecondNumberLabel.text = String(secondGuessNumber)
-        } else if thirdGuessNumber == 0 {
-            thirdGuessNumber = button
-            baseCell.ThirdNumberLabel.text = String(thirdGuessNumber)
-        } else if fourthGuessNumber == 0 {
-            fourthGuessNumber = button
-            baseCell.FourthNumberLabel.text = String(fourthGuessNumber)
-        }
-    }
-}
+ 
+ 
+ func shuffleSet() {
+ let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9].shuffled()
+ firstAnswerNumber = numbers[0]
+ secondAnswerNumber = numbers[1]
+ thirdAnswerNumber = numbers[2]
+ fourthAnswerNumber = numbers[3]
+ 
+ let answer: Array = [firstAnswerNumber, secondAnswerNumber, thirdAnswerNumber, fourthAnswerNumber]
+ print(answer)
+ print("랜덤 숫자는 \(firstAnswerNumber)\(secondAnswerNumber)\(thirdAnswerNumber)\(fourthAnswerNumber) 입니다.")
+ }
+ 
+ func checkRound(_ firstNumber:Int, _ secondNumber:Int, _ thirdNumber:Int, _ fourthNumber:Int) {
+ 
+ var array: Array = [firstNumber, secondNumber, thirdNumber, fourthNumber]
+ var answer: Array = [firstAnswerNumber, secondAnswerNumber, thirdAnswerNumber, fourthAnswerNumber]
+ 
+ if (firstNumber == secondNumber) || (firstNumber == thirdNumber) || (firstNumber == fourthNumber) || (secondNumber == thirdNumber) || (thirdNumber == fourthNumber) {
+ // TODO: 지우기
+ //            firstNumberLabel.text = ""
+ //            secondNumberLabel.text = ""
+ //            thirdNumberLabel.text = ""
+ //            fourthNumberLabel.text = ""
+ 
+ let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+ let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+ alert.addAction(action)
+ present(alert, animated: true, completion: nil)
+ 
+ print("중복")
+ return
+ }
+ 
+ if answer == array {
+ let alert = UIAlertController(title: "YOU WIN!!", message: nil, preferredStyle: .alert)
+ let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+ alert.addAction(action)
+ present(alert, animated: true, completion: nil)
+ reset()
+ return
+ 
+ } else {
+ if firstNumber == firstAnswerNumber {
+ StrikeCount += 1
+ }
+ if secondNumber == secondAnswerNumber {
+ StrikeCount += 1
+ }
+ if thirdNumber == thirdAnswerNumber {
+ StrikeCount += 1
+ }
+ if fourthNumber == fourthAnswerNumber {
+ StrikeCount += 1
+ }
+ 
+ BaseCell.strikeLabel.text = "\(StrikeCount)"
+ 
+ for a in array {
+ if answer.contains(a), let idx1 = array.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
+ array.remove(at: idx1)
+ answer.remove(at: idx2)
+ }
+ }
+ BaseCell.ballLabel.text = "\(4 - array.count - StrikeCount)"
+ }
+ roundCount += 1
+ }
+ 
+ var lastRow = 3
+ func pressButton(_ button: Int) {
+ let baseCell = BaseCell()
+ if firstGuessNumber == 0 {
+ firstGuessNumber = button
+ // playList.last.firstNumberLabel.text =
+ // playList[currentGame].firstNumberLabel.text = ""
+ baseCell.FirstNumberLabel.text = String(firstGuessNumber)
+ } else if secondGuessNumber == 0 {
+ secondGuessNumber = button
+ baseCell.SecondNumberLabel.text = String(secondGuessNumber)
+ } else if thirdGuessNumber == 0 {
+ thirdGuessNumber = button
+ baseCell.ThirdNumberLabel.text = String(thirdGuessNumber)
+ } else if fourthGuessNumber == 0 {
+ fourthGuessNumber = button
+ baseCell.FourthNumberLabel.text = String(fourthGuessNumber)
+ }
+ }
+ }
  */
 
