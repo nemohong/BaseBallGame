@@ -20,6 +20,8 @@ class BaseCell: UITableViewCell {
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var ballLabel: UILabel!
     
+    
+    
     //    var play: Int? {
     //        didSet {
     //            if let play = play {
@@ -41,6 +43,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var playChance: Int = 1
+    
     var firstAnswerNumber: Int = 0
     var secondAnswerNumber: Int = 0
     var thirdAnswerNumber: Int = 0
@@ -55,17 +59,16 @@ class ViewController: UIViewController {
     var ballCount: Int = 0
     var strikeCount: Int = 0
     
-    var playChance: Int = 3
-    var playList = [1, 2, 3]
-    var firstNumberLabel = Array(repeating: 0, count: playChance)
-    var secondNumberLabel = Array(repeating: 0, count: playChance)
-    var thirdNumberLabel = Array(repeating: 0, count: playChance)
-    var fourthNumberLabel = Array(repeating: 0, count: playChance)
-    var strikeLabel = Array(repeating: 0, count: playChance)
-    var roundLabel = Array(repeating: 0, count: playChance)
-    var ballLabel = Array(repeating: 0, count: playChance)
-    
-    
+    var chance = 2
+    var playList: Array = [1]
+    var firstNumberLabel: Array = [0]
+    var secondNumberLabel: Array = [0]
+    var thirdNumberLabel: Array = [0]
+    var fourthNumberLabel: Array = [0]
+    var strikeLabel: Array = [0]
+    var roundLabel: Array = [0]
+    var ballLabel: Array = [0]
+    var guessNumberArray = [0, 0, 0, 0]
     
     //    var playList: [Int]
     //    var playList: [Play]
@@ -78,9 +81,6 @@ class ViewController: UIViewController {
     //
     //         var round: String = "1라운드"
     //     }
-    
-    
-    var guessNumberArray = [0, 0, 0, 0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,12 +102,16 @@ class ViewController: UIViewController {
         roundCount = 0
         ballCount = 0
         strikeCount = 0
-        firstNumberLabel = Array(repeating: 0, count: firstNumberLabel.count)
-        secondNumberLabel = Array(repeating: 0, count: secondNumberLabel.count)
-        thirdNumberLabel = Array(repeating: 0, count: thirdNumberLabel.count)
-        fourthNumberLabel = Array(repeating: 0, count: fourthNumberLabel.count)
-        strikeLabel = Array(repeating: 0, count: strikeLabel.count)
-        ballLabel = Array(repeating: 0, count: ballLabel.count)
+        firstNumberLabel = Array(repeating: 0, count: playChance)
+        secondNumberLabel = Array(repeating: 0, count: playChance)
+        thirdNumberLabel = Array(repeating: 0, count: playChance)
+        fourthNumberLabel = Array(repeating: 0, count: playChance)
+        strikeLabel = Array(repeating: 0, count: playChance)
+        ballLabel = Array(repeating: 0, count: playChance)
+        for _ in 0...playChance {
+            playList.append(chance)
+            chance += 1
+        }
         shuffleSet()
         tableView.reloadData()
         
@@ -197,70 +201,23 @@ class ViewController: UIViewController {
         } else if fourthNumberLabel[roundCount] == 0 {
             fourthNumberLabel[roundCount] = number
         }
-        
         tableView.reloadData()
     }
     
-    @IBAction func numberPad1(_ sender: UIButton) {
-        print("1")
-        pressButton(1)
-    }
     
-    @IBAction func numberPad2(_ sender: UIButton) {
-        print("2")
-        pressButton(2)
-    }
     
-    @IBAction func numberPad3(_ sender: UIButton) {
-        print("3")
-        pressButton(3)
+    func pressXButton() {
+        if fourthNumberLabel[roundCount] != 0 {
+            fourthNumberLabel[roundCount] = 0
+        } else if thirdNumberLabel[roundCount] != 0 {
+            thirdNumberLabel[roundCount] = 0
+        } else if secondNumberLabel[roundCount] != 0 {
+            secondNumberLabel[roundCount] = 0
+        } else if firstNumberLabel[roundCount] != 0 {
+            firstNumberLabel[roundCount] = 0
+        }
+        tableView.reloadData()
     }
-    
-    @IBAction func numberPad4(_ sender: UIButton) {
-        print("4")
-        pressButton(4)
-    }
-    
-    @IBAction func numberPad5(_ sender: UIButton) {
-        print("5")
-        pressButton(5)
-    }
-    
-    @IBAction func numberPad6(_ sender: UIButton) {
-        print("6")
-        pressButton(6)
-    }
-    
-    @IBAction func numberPad7(_ sender: UIButton) {
-        print("7")
-        pressButton(7)
-    }
-    
-    @IBAction func numberPad8(_ sender: UIButton) {
-        print("8")
-        pressButton(8)
-    }
-    
-    @IBAction func numberPad9(_ sender: UIButton) {
-        print("9")
-        pressButton(9)
-    }
-    
-    /*
-     @IBAction func numberPadX(_ sender: UIButton) {
-     print("X")
-     
-     firstGuessNumber = 0
-     secondGuessNumber = 0
-     thirdGuessNumber = 0
-     fourthGuessNumber = 0
-     // TODO:
-     //        firstNumberLabel.text = ""
-     //        secondNumberLabel.text = ""
-     //        thirdNumberLabel.text = ""
-     //        fourthNumberLabel.text = ""
-     }
-     */
     
     @IBAction func numberPadV(_ sender: UIButton) {
         if firstNumberLabel[roundCount] != 0 && secondNumberLabel[roundCount] != 0 && thirdNumberLabel[roundCount] != 0 && fourthNumberLabel[roundCount] != 0 {
@@ -270,7 +227,7 @@ class ViewController: UIViewController {
             ballCount = 0
         }
         
-        if roundCount == playList.count {
+        if roundCount == playChance {
             let alert = UIAlertController(title: "You lose...", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
@@ -293,7 +250,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     // TODO: 꼭 고치자~ ^^
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return playList.count
+        return playChance
         // return playList.count
     }
     
@@ -320,14 +277,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func getAnswer(index: Int) -> String {
-        return String(index)
-    }
-    
-    func addOne(index: Int) {
-        playList[index] += 1
-        tableView.reloadData()
-    }
+//    func getAnswer(index: Int) -> String {
+//        return String(index)
+//    }
+//    
+//    func addOne(index: Int) {
+//        playList[index] += 1
+//        tableView.reloadData()
+//    }
 }
 
 
