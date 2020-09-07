@@ -133,7 +133,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberPadX:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i4H-vs-lEG"/>
+                                                            <action selector="numberPadX:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhd-bt-lAr"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -187,7 +187,7 @@
                                 <rect key="frame" x="20" y="152.5" width="374" height="563.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="tpU-Cf-kqY" customClass="BaseCell" customModule="BaseBallGame" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="tpU-Cf-kqY" customClass="BaseballCell" customModule="BaseBallGame" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpU-Cf-kqY" id="3vH-AP-7L5">

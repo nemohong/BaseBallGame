@@ -7,43 +7,12 @@
 //
 
 import UIKit
-
-// TODO: 이름 변경
-// TODO: 파일 새로 생성해서 관리
-class BaseCell: UITableViewCell {
-    
-    @IBOutlet weak var firstNumberLabel: UILabel!
-    @IBOutlet weak var secondNumberLabel: UILabel!
-    @IBOutlet weak var thirdNumberLabel: UILabel!
-    @IBOutlet weak var fourthNumberLabel: UILabel!
-    @IBOutlet weak var strikeLabel: UILabel!
-    @IBOutlet weak var roundLabel: UILabel!
-    @IBOutlet weak var ballLabel: UILabel!
-    
-    
-    
-    //    var play: Int? {
-    //        didSet {
-    //            if let play = play {
-    //                firstNumberLabel.text = play.first
-    //                secondNumberLabel.text = play.second
-    //                thirdNumberLabel.text = play.third
-    //                fourthNumberLabel.text = play.fourth
-    //                strikeLabel.text = play.strike
-    //                ballLabel.text = play.ball
-    //                roundLabel.text = play.round
-    //            }
-    //        }
-    //    }
-    
-}
-
+ 
 class ViewController: UIViewController {
-    
-    
+     
     @IBOutlet weak var tableView: UITableView!
     
-    var playChance: Int = 1
+    var playChance: Int = 0
     
     var firstAnswerNumber: Int = 0
     var secondAnswerNumber: Int = 0
@@ -60,14 +29,14 @@ class ViewController: UIViewController {
     var strikeCount: Int = 0
     
     var chance = 2
-    var playList: Array = [1]
-    var firstNumberLabel: Array = [0]
-    var secondNumberLabel: Array = [0]
-    var thirdNumberLabel: Array = [0]
-    var fourthNumberLabel: Array = [0]
-    var strikeLabel: Array = [0]
-    var roundLabel: Array = [0]
-    var ballLabel: Array = [0]
+    var playList: [Int] = [1]
+    var firstNumberLabel: [Int] = [0]
+    var secondNumberLabel: [Int] = [0]
+    var thirdNumberLabel: [Int] = [0]
+    var fourthNumberLabel: [Int] = [0]
+    var strikeLabel: [Int] = [0]
+    var roundLabel: [Int] = [0]
+    var ballLabel: [Int] = [0]
     var guessNumberArray = [0, 0, 0, 0]
     
     //    var playList: [Int]
@@ -84,10 +53,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reset()
         tableView.dataSource = self
         tableView.delegate = self
+         
+        
     }
+      
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showAlert()
+    }
+
     
     func reset() {
         
@@ -204,7 +180,55 @@ class ViewController: UIViewController {
         tableView.reloadData()
     }
     
+    @IBAction func numberPad1(_ sender: UIButton) {
+        print("1")
+        pressButton(1)
+    }
     
+    @IBAction func numberPad2(_ sender: UIButton) {
+        print("2")
+        pressButton(2)
+    }
+    
+    @IBAction func numberPad3(_ sender: UIButton) {
+        print("3")
+        pressButton(3)
+    }
+    
+    @IBAction func numberPad4(_ sender: UIButton) {
+        print("4")
+        pressButton(4)
+    }
+    
+    @IBAction func numberPad5(_ sender: UIButton) {
+        print("5")
+        pressButton(5)
+    }
+    
+    @IBAction func numberPad6(_ sender: UIButton) {
+        print("6")
+        pressButton(6)
+    }
+    
+    @IBAction func numberPad7(_ sender: UIButton) {
+        print("7")
+        pressButton(7)
+    }
+    
+    @IBAction func numberPad8(_ sender: UIButton) {
+        print("8")
+        pressButton(8)
+    }
+    
+    @IBAction func numberPad9(_ sender: UIButton) {
+        print("9")
+        pressButton(9)
+    }
+    
+    @IBAction func numberPadX(_ sender: Any) {
+        print("X")
+        pressXButton()
+    }
     
     func pressXButton() {
         if fourthNumberLabel[roundCount] != 0 {
@@ -256,7 +280,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     // FIXME: dsdfdsfas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! BaseCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! BaseballCell
         //
         cell.roundLabel.text = String(playList[indexPath.row])
         cell.firstNumberLabel.text = String(firstNumberLabel[indexPath.row])
@@ -348,7 +372,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
  StrikeCount += 1
  }
  
- BaseCell.strikeLabel.text = "\(StrikeCount)"
+ BaseballCell.strikeLabel.text = "\(StrikeCount)"
  
  for a in array {
  if answer.contains(a), let idx1 = array.firstIndex(of: a), let idx2 = answer.firstIndex(of: a) {
@@ -383,3 +407,32 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
  }
  */
 
+extension ViewController {
+    func showAlert() {
+         
+        let alert = UIAlertController(title: "횟수를 입력하세요.",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.keyboardType = .numberPad
+            textField.placeholder = "숫자만 입력하세요"
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .destructive) { _ in
+            self.playChance = 0
+            self.reset()
+        }
+        
+        let applyAction = UIAlertAction(title: "확인", style: .default) { _ in
+            let chance = alert.textFields?.first?.text ?? "0"
+            self.playChance = Int(chance)!
+            self.reset()
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(applyAction)
+        
+        present(alert, animated: true)
+    }
+}

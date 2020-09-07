@@ -13,6 +13,7 @@
 		15A321A924E40EE200993CA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A321A724E40EE200993CA3 /* Main.storyboard */; };
 		15A321AB24E40EE400993CA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A321AA24E40EE400993CA3 /* Assets.xcassets */; };
 		15A321AE24E40EE400993CA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A321AC24E40EE400993CA3 /* LaunchScreen.storyboard */; };
+		15A5A13D2506635A00903401 /* BaseballCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5A13C2506635A00903401 /* BaseballCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		15A321AA24E40EE400993CA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15A321AD24E40EE400993CA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15A321AF24E40EE400993CA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15A5A13C2506635A00903401 /* BaseballCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseballCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				15A321A124E40EE200993CA3 /* AppDelegate.swift */,
 				15A321A324E40EE200993CA3 /* SceneDelegate.swift */,
 				15A321A524E40EE200993CA3 /* ViewController.swift */,
+				15A5A13C2506635A00903401 /* BaseballCell.swift */,
 				15A321A724E40EE200993CA3 /* Main.storyboard */,
 				15A321AA24E40EE400993CA3 /* Assets.xcassets */,
 				15A321AC24E40EE400993CA3 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				15A321A624E40EE200993CA3 /* ViewController.swift in Sources */,
 				15A321A224E40EE200993CA3 /* AppDelegate.swift in Sources */,
 				15A321A424E40EE200993CA3 /* SceneDelegate.swift in Sources */,
+				15A5A13D2506635A00903401 /* BaseballCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
