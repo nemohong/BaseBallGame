@@ -14,20 +14,24 @@ class ViewController: UIViewController {
     
     var playChance: Int = 0
     
+    // 정답숫자 변수
     var firstAnswerNumber: Int = 0
     var secondAnswerNumber: Int = 0
     var thirdAnswerNumber: Int = 0
     var fourthAnswerNumber: Int = 0
     
+    // 유추숫자 변수
     var firstGuessNumber: Int = 0
     var secondGuessNumber: Int = 0
     var thirdGuessNumber: Int = 0
     var fourthGuessNumber: Int = 0
     
+    // 라운드, 볼, 스트라이크 변수
     var roundCount: Int = 0
     var ballCount: Int = 0
     var strikeCount: Int = 0
     
+    //
     var chance = 2
     var playList: [Int] = [1]
     var firstNumberLabel: [Int] = [0]
@@ -121,6 +125,10 @@ class ViewController: UIViewController {
             //            fourthNumberLabel.text = ""
             
             let alert = UIAlertController(title: "숫자가 중복되었습니다", message: nil, preferredStyle: .alert)
+            firstNumberLabel[roundCount] = 0
+            secondNumberLabel[roundCount] = 0
+            thirdNumberLabel[roundCount] = 0
+            fourthNumberLabel[roundCount] = 0
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
