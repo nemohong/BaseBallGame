@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SBR-dF-GIE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,38 +10,44 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Index Page-->
         <scene sceneID="a5n-ya-QDR">
             <objects>
-                <viewController id="SBR-dF-GIE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z1l-kn-0Ti">
+                <viewController id="SBR-dF-GIE" customClass="IndexPage" customModule="BaseBallGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <button key="view" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="XHC-bd-yyr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="VSH-zd-IAH"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" red="0.99959490760000003" green="1" blue="0.56038054540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </state>
+                        <connections>
+                            <action selector="baseBallButton:" destination="SBR-dF-GIE" eventType="touchUpInside" id="Osv-4Z-CzV"/>
+                            <segue destination="BYZ-38-t0r" kind="show" id="I7O-GH-v8C"/>
+                        </connections>
+                    </button>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PlJ-u8-IAC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="790" y="137"/>
+            <point key="canvasLocation" x="138" y="-540"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BaseBallGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Uh-5n-met">
-                                <rect key="frame" x="372" y="64" width="22" height="22"/>
+                                <rect key="frame" x="372" y="20" width="22" height="22"/>
                                 <state key="normal" image="memories" catalog="system"/>
                                 <connections>
                                     <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1VQ-Nh-mcV"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="8EZ-jC-vpa">
-                                <rect key="frame" x="52" y="736" width="310" height="106"/>
+                                <rect key="frame" x="52" y="682" width="310" height="106"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gVR-MC-2R1">
                                         <rect key="frame" x="0.0" y="0.0" width="230" height="106"/>
@@ -173,7 +179,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bNn-TK-YPD">
-                                <rect key="frame" x="20" y="106" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="62" width="374" height="26.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGH-J0-cEC">
                                         <rect key="frame" x="0.0" y="0.0" width="62" height="26.5"/>
@@ -202,7 +208,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lGs-fv-lGP" customClass="Basecell">
-                                <rect key="frame" x="20" y="152.5" width="374" height="563.5"/>
+                                <rect key="frame" x="20" y="108.5" width="374" height="553.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="tpU-Cf-kqY" customClass="BaseballCell" customModule="BaseBallGame" customModuleProvider="target">
@@ -305,13 +311,14 @@
                             <constraint firstItem="bNn-TK-YPD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tRB-Y1-mxj"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="J0a-Dj-2pc"/>
                     <connections>
                         <outlet property="tableView" destination="lGs-fv-lGP" id="gPX-6C-zxC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.27678571428569"/>
+            <point key="canvasLocation" x="138" y="161"/>
         </scene>
     </scenes>
     <resources>
