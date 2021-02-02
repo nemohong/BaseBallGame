@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,27 +15,43 @@
         <scene sceneID="a5n-ya-QDR">
             <objects>
                 <viewController id="SBR-dF-GIE" customClass="IndexPage" customModule="BaseBallGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <button key="view" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="XHC-bd-yyr">
+                    <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" id="HJV-RY-Lf8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                        <state key="normal" title="Button">
-                            <color key="titleColor" red="0.99959490760000003" green="1" blue="0.56038054540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </state>
-                        <connections>
-                            <action selector="baseBallButton:" destination="SBR-dF-GIE" eventType="touchUpInside" id="Osv-4Z-CzV"/>
-                            <segue destination="BYZ-38-t0r" kind="show" id="I7O-GH-v8C"/>
-                        </connections>
-                    </button>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etW-ur-F9g">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="BaseBall Game"/>
+                                <connections>
+                                    <action selector="baseBallButton:" destination="SBR-dF-GIE" eventType="touchUpInside" id="Qno-Ui-GFx"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="U19-3X-LyM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRq-rK-klW">
+                                <rect key="frame" x="0.0" y="448" width="414" height="448"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Up Down Game"/>
+                                <connections>
+                                    <action selector="upDownSliderGameButton:" destination="SBR-dF-GIE" eventType="touchUpInside" id="2lX-wf-yaA"/>
+                                    <segue destination="qY8-Fb-BNs" kind="show" id="kOH-IG-8BL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fRX-YU-dEU"/>
+                        <constraints>
+                            <constraint firstItem="VRq-rK-klW" firstAttribute="height" secondItem="etW-ur-F9g" secondAttribute="height" id="IQU-iC-Jza"/>
+                        </constraints>
+                    </stackView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PlJ-u8-IAC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="-540"/>
         </scene>
-        <!--View Controller-->
+        <!--Base Ball Game-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BaseBallGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BaseBallGame" customModule="BaseBallGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -318,11 +335,94 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="161"/>
+            <point key="canvasLocation" x="1374" y="-841"/>
+        </scene>
+        <!--Up Down Slider Game-->
+        <scene sceneID="Fdf-zR-0Dy">
+            <objects>
+                <viewController id="qY8-Fb-BNs" customClass="UpDownSliderGame" customModule="BaseBallGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9f1-Nw-Svg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-cb-Ct4">
+                                <rect key="frame" x="20" y="579.5" width="374" height="128.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m26-bt-p9d">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4Z-uO-dTd">
+                                                <rect key="frame" x="0.0" y="0.0" width="124.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhH-Nw-Rxb">
+                                                <rect key="frame" x="124.5" y="0.0" width="125" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2j-XA-6W8">
+                                                <rect key="frame" x="249.5" y="0.0" width="124.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="DhH-Nw-Rxb" firstAttribute="width" secondItem="A4Z-uO-dTd" secondAttribute="width" id="g6A-vb-pPJ"/>
+                                            <constraint firstItem="g2j-XA-6W8" firstAttribute="width" secondItem="A4Z-uO-dTd" secondAttribute="width" id="wia-mg-W8e"/>
+                                        </constraints>
+                                    </stackView>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="AkW-QD-07B">
+                                        <rect key="frame" x="-2" y="30.5" width="378" height="31"/>
+                                        <connections>
+                                            <action selector="SliderValueChanged:" destination="BAY-yO-6ua" eventType="valueChanged" id="ffs-yS-zdU"/>
+                                            <action selector="SliderValueChanged:" destination="qY8-Fb-BNs" eventType="valueChanged" id="lEN-L5-0pw"/>
+                                            <action selector="upDownSlider:" destination="BAY-yO-6ua" eventType="valueChanged" id="a5a-qw-NWy"/>
+                                            <action selector="upDownSlider:" destination="qY8-Fb-BNs" eventType="valueChanged" id="bQv-dj-Vv0"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFQ-gE-AtL">
+                                        <rect key="frame" x="0.0" y="70.5" width="374" height="58"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="checkmark.seal.fill" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large" weight="heavy"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="hitButton:" destination="qY8-Fb-BNs" eventType="touchUpInside" id="zXf-zQ-Hk4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="buP-qJ-Z4e"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fbT-cb-Ct4" secondAttribute="trailing" constant="20" id="XOy-0c-O6k"/>
+                            <constraint firstItem="fbT-cb-Ct4" firstAttribute="leading" secondItem="buP-qJ-Z4e" secondAttribute="leading" constant="20" id="mqc-9K-kpO"/>
+                            <constraint firstItem="buP-qJ-Z4e" firstAttribute="bottom" secondItem="fbT-cb-Ct4" secondAttribute="bottom" constant="100" id="yGR-DR-erh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ppV-Fx-9Bd"/>
+                    <connections>
+                        <outlet property="gussingButton" destination="zFQ-gE-AtL" id="zzl-nw-cmF"/>
+                        <outlet property="gussingNumber" destination="DhH-Nw-Rxb" id="Kyz-vI-L4j"/>
+                        <outlet property="maximumNumber" destination="g2j-XA-6W8" id="mVs-3q-D4t"/>
+                        <outlet property="minimumNumber" destination="A4Z-uO-dTd" id="gwB-7N-eax"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6vd-tA-9n7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="BAY-yO-6ua" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="-194"/>
         </scene>
     </scenes>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
         <image name="memories" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -16,8 +16,12 @@ class IndexPage : UIViewController {
     }
     
     @IBAction func baseBallButton(_ sender: UIButton) {
-        print("HI")
+        print("BaseBall Game")
         
     }
     
+    @IBAction func upDownSliderGameButton(_ sender: UIButton) {
+        print("Up Down Slider Game")
+        
+    }
 }

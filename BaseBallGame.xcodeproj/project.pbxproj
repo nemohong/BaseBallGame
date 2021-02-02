@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		154613A925C81A0000CEEA92 /* indexPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154613A825C81A0000CEEA92 /* indexPage.swift */; };
+		154D8BE125C91C2E00A7B26E /* UpDownSliderGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154D8BE025C91C2E00A7B26E /* UpDownSliderGame.swift */; };
 		15A321A224E40EE200993CA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A321A124E40EE200993CA3 /* AppDelegate.swift */; };
 		15A321A424E40EE200993CA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A321A324E40EE200993CA3 /* SceneDelegate.swift */; };
-		15A321A624E40EE200993CA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A321A524E40EE200993CA3 /* ViewController.swift */; };
+		15A321A624E40EE200993CA3 /* BaseBallGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A321A524E40EE200993CA3 /* BaseBallGame.swift */; };
 		15A321A924E40EE200993CA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A321A724E40EE200993CA3 /* Main.storyboard */; };
 		15A321AB24E40EE400993CA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A321AA24E40EE400993CA3 /* Assets.xcassets */; };
 		15A321AE24E40EE400993CA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A321AC24E40EE400993CA3 /* LaunchScreen.storyboard */; };
@@ -19,10 +20,11 @@
 
 /* Begin PBXFileReference section */
 		154613A825C81A0000CEEA92 /* indexPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = indexPage.swift; sourceTree = "<group>"; };
+		154D8BE025C91C2E00A7B26E /* UpDownSliderGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDownSliderGame.swift; sourceTree = "<group>"; };
 		15A3219E24E40EE200993CA3 /* BaseBallGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBallGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A321A124E40EE200993CA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A321A324E40EE200993CA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		15A321A524E40EE200993CA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		15A321A524E40EE200993CA3 /* BaseBallGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBallGame.swift; sourceTree = "<group>"; };
 		15A321A824E40EE200993CA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15A321AA24E40EE400993CA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15A321AD24E40EE400993CA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,10 +64,11 @@
 			children = (
 				15A321A124E40EE200993CA3 /* AppDelegate.swift */,
 				15A321A324E40EE200993CA3 /* SceneDelegate.swift */,
-				15A321A524E40EE200993CA3 /* ViewController.swift */,
-				15A5A13C2506635A00903401 /* BaseballCell.swift */,
-				15A321A724E40EE200993CA3 /* Main.storyboard */,
 				154613A825C81A0000CEEA92 /* indexPage.swift */,
+				15A321A524E40EE200993CA3 /* BaseBallGame.swift */,
+				15A5A13C2506635A00903401 /* BaseballCell.swift */,
+				154D8BE025C91C2E00A7B26E /* UpDownSliderGame.swift */,
+				15A321A724E40EE200993CA3 /* Main.storyboard */,
 				15A321AA24E40EE400993CA3 /* Assets.xcassets */,
 				15A321AC24E40EE400993CA3 /* LaunchScreen.storyboard */,
 				15A321AF24E40EE400993CA3 /* Info.plist */,
@@ -144,7 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15A321A624E40EE200993CA3 /* ViewController.swift in Sources */,
+				15A321A624E40EE200993CA3 /* BaseBallGame.swift in Sources */,
+				154D8BE125C91C2E00A7B26E /* UpDownSliderGame.swift in Sources */,
 				154613A925C81A0000CEEA92 /* indexPage.swift in Sources */,
 				15A321A224E40EE200993CA3 /* AppDelegate.swift in Sources */,
 				15A321A424E40EE200993CA3 /* SceneDelegate.swift in Sources */,

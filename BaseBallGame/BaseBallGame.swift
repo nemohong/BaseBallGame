@@ -8,7 +8,7 @@
 
 import UIKit
  
-class ViewController: UIViewController {
+class BaseBallGame: UIViewController {
      
     @IBOutlet weak var tableView: UITableView!
     
@@ -279,7 +279,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - Related TableViews
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension BaseBallGame: UITableViewDataSource, UITableViewDelegate {
     // TODO: 꼭 고치자~ ^^
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playChance
@@ -415,7 +415,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
  }
  */
 
-extension ViewController {
+extension BaseBallGame {
     func showAlert() {
          
         let alert = UIAlertController(title: "횟수를 입력하세요.",
